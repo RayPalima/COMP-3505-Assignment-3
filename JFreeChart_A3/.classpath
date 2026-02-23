@@ -8,10 +8,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/Users/Ray/Desktop/&apos;/School Files/COMP 3505/Assignment 3 Files/COMP-3505-Assignment-3/JFreeChart (The Artifacts)/lib/gnujaxp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ray/Desktop/&apos;/School Files/COMP 3505/Assignment 3 Files/COMP-3505-Assignment-3/JFreeChart (The Artifacts)/lib/jcommon-1.0.0-rc1-cvs.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ray/Desktop/&apos;/School Files/COMP 3505/Assignment 3 Files/COMP-3505-Assignment-3/JFreeChart (The Artifacts)/lib/jcommon-1.0.5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ray/Desktop/&apos;/School Files/COMP 3505/Assignment 3 Files/COMP-3505-Assignment-3/JFreeChart (The Artifacts)/lib/mockito-all-2.0.2-beta.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ray/Desktop/&apos;/School Files/COMP 3505/Assignment 3 Files/COMP-3505-Assignment-3/JFreeChart (The Artifacts)/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kayde/Downloads/Assignment 3 - artifacts/Assignment 3 - artifacts/JFreeChart v2.0/JFreeChart/lib/gnujaxp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kayde/Downloads/Assignment 3 - artifacts/Assignment 3 - artifacts/JFreeChart v2.0/JFreeChart/lib/jcommon-1.0.0-rc1-cvs.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kayde/Downloads/Assignment 3 - artifacts/Assignment 3 - artifacts/JFreeChart v2.0/JFreeChart/lib/jcommon-1.0.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kayde/Downloads/Assignment 3 - artifacts/Assignment 3 - artifacts/JFreeChart v2.0/JFreeChart/lib/mockito-all-2.0.2-beta.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kayde/Downloads/Assignment 3 - artifacts/Assignment 3 - artifacts/JFreeChart v2.0/JFreeChart/lib/servlet.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
