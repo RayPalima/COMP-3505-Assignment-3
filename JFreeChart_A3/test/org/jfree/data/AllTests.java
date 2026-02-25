@@ -7,7 +7,7 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasses({ CombineTest.class, ConstrainTest.class, ContainsTest.class, EqualsTest.class, ExpandTest.class,
 		ExpandToIncludeTest.class, GetCentralValueTest.class, GetLengthTest.class, GetLowerBoundTest.class,
 		GetUpperBoundTest.class, IntersectsTest.class, ShiftTest.class, ShiftWithZeroCrossingTest.class,
-		StringTest.class })
+		StringTest.class,calculateColumnTotalTest.class,calculateRowTotalTest.class })
 public class AllTests {
 
 }
