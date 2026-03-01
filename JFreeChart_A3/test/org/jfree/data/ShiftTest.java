@@ -21,10 +21,15 @@ private Range exampleRange;
 	@Test
 	void testValidRange()  throws Exception {
 	    Range shiftedRange = Range.shift(exampleRange, 1);
-	    Range expectedRange = new Range(1,7);
+	    Range expectedRange = new Range(3,7);
 	    assertEquals(expectedRange, shiftedRange);
     };
-	
+    @Test
+    void shift_NegativeDelta() {
+      Range shifted = Range.shift(exampleRange, -1);
+      assertEquals(1.0, shifted.getLowerBound(), 0.0);
+      assertEquals(5.0, shifted.getUpperBound(), 0.0);
+    }
 	@Test
 	void testNullRange()  throws Exception {
 		Range nullRange = null;
@@ -36,14 +41,14 @@ private Range exampleRange;
 	@Test
 	void testDeltaHigherThanZero()  throws Exception {
 	    Range shiftedRange = Range.shift(exampleRange, 2);
-	    Range expectedRange = new Range(0,8);
+	    Range expectedRange = new Range(4,8);
 	    assertEquals(expectedRange, shiftedRange);
     };
 
 	@Test
 	void testDeltaLowerThanZero()  throws Exception {
 	    Range shiftedRange = Range.shift(exampleRange, -1);
-	    Range expectedRange = new Range(3,5);
+	    Range expectedRange = new Range(1,5);
 	    assertEquals(expectedRange, shiftedRange);
     };
     
@@ -57,21 +62,29 @@ private Range exampleRange;
 	@Test
 	void testShiftCrossesZero()  throws Exception {
 	    Range shiftedRange = Range.shift(exampleRange, 4);
-	    Range expectedRange = new Range(0,10);
+	    Range expectedRange = new Range(6,10);
 	    assertEquals(expectedRange, shiftedRange);
     };
+    //No zero crossing allowed, test this.
+    @Test
+    void testShift_DisallowZeroCrossing_ClampsAtZero() {
+        Range base = new Range(2, 6);
+        Range shifted = Range.shift(base, -5); 
+        assertEquals(0.0, shifted.getLowerBound(), 0.0);
+        assertEquals(1.0, shifted.getUpperBound(), 0.0);
+    }
 
 //	The following are BVA testing (Only one boundary).
 // 	The right at boundary (0 delta) is already covered above.
-	@Test
 	
-	//Following are minimum+ BVA
+	//Following are minimum+ 
+    @Test
 	void testHighDelta()  throws Exception {
 	    Range shiftedRange = Range.shift(new Range(1,5), 100);
 	    Range expectedRange = new Range(0,105);
 	    assertEquals(expectedRange, shiftedRange);
     };
-    
+    @Test
 	void testWhenRangeStartsBeyondZero()  throws Exception {
 	    Range shiftedRange = Range.shift(new Range(-1,5), 2);
 	    Range expectedRange = new Range(0,7);

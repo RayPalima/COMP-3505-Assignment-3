@@ -23,6 +23,7 @@ class IntersectsTest {
         exampleRange = new Range(0, 5);
         assertFalse(exampleRange.intersects(100,101),"No overlap");
     }
+    @Test
     void testIntersectingNegativeRanges() throws Exception {
         exampleRange = new Range(-20, -1);
         assertTrue(exampleRange.intersects(-5,-4),"Overlap expected");
