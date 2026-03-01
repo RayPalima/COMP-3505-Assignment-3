@@ -13,23 +13,32 @@ jobs:
       - name: Testing pipeline
         run: |
           echo 'Starting the pipeline'
-          # Making sure we are in the proper folder
+          # Making sure we are in the proper folder (because of how the github repo was setup).
           cd JFreeChart_A3
           
-          # The Following are needed to run the pipeline
+          # The Following are needed to run the pipeline.
           mkdir bin
           mkdir lib
           
           # The following adds the needed libraries.
+          
+          # This one is needed for JUNIT testing (the library needed for the test files (test folder)) - Given from the activity document.
+          curl https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.4/junit-platform-console-standalone-1.11.4.jar -o lib/junit-platform-console-standalone-1.11.4.jar
+          
+          # The two following are needed to run JFreeChart (the libraries needed for the source files (src folder)) - Given from the assignment description document.
           curl https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar -o lib/javax.servlet-api-3.0.1.jar
           curl https://repo1.maven.org/maven2/org/jfree/jcommon/1.0.17/jcommon-1.0.17.jar -o lib/jcommon-1.0.17.jar
           
-          # From my understanding, this runs the "source code". So we need both DataUtilities and Range.
-          javac -d bin/ src/org/jfree/data/DataUtilities.java
-          javac -d bin/ src/org/jfree/data/Range.java
+          # This compiles our source files. Given/based on the activity document.
+          # Notes:
+          # From the activity, I used the one with this part added: "$(find src/ -name "*.java")" because we have many classes that we are finding (DataUtilities and Range - they also reference/import the other classes).
+          # I added the "-cp lib/jcommon-1.0.17.jar;lib/javax.servlet-api-3.0.1.jar" because when compiling, we also need to consider the "extenal jar's" required to run JFreeChart. Furthermore, another reason is that it is not in the src folder, while they are referenced by the classes (an external jar).
+          javac -d bin -cp lib/jcommon-1.0.17.jar;lib/javax.servlet-api-3.0.1.jar $(find src -name "*.java")
 
-          # Starts JUNIT?
-          javac -d bin -cp bin:lib/junit-platform-console-standalone-1.5.2.jar test/*
+          # This compiles our test files.
+          # Similarly to the compilation of our source files, we are both using the one with "$(find src/ -name "*.java")" and added "lib/jcommon-1.0.17.jar;lib/javax.servlet-api-3.0.1.jar". They are for the same reason as above. Again, they were from the activity document given to us.
+          javac -d bin -cp bin;lib/jcommon-1.0.17.jar;lib/javax.servlet-api-3.0.1.jar;lib/junit-platform-console-standalone-1.11.4.jar $(find test -name "*.java")
 
-          # Runs JUNIT?
-          java -jar lib/junit-platform-console-standalone-1.5.2.jar --class-path bin --scan-class-path
+          # This runs our test files - Given from the activity file.
+          # Note: For some reason, just having "bin" wouldn't work. Due to this, similarly to both compiling the test and source files, I had to reference the external jars/libraries we used.
+          java -jar lib/junit-platform-console-standalone-1.11.4.jar --class-path bin;lib/jcommon-1.0.17.jar;lib/javax.servlet-api-3.0.1.jar --scan-class-path
