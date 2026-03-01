@@ -115,7 +115,7 @@ public strictfp class Range implements Serializable {
      * @return The length.
      */
     public double getLength() {
-        return this.upper - this.lower;
+        return (this.upper - this.lower) + 1;
     }
 
     /**
