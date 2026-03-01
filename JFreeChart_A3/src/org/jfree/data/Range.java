@@ -201,7 +201,7 @@ public strictfp class Range implements Serializable {
         }
         else {
             if (range2 == null) {
-                return range2;
+                return range1;
             }
             else {
                 double l = Math.min(range1.getLowerBound(), 
@@ -334,14 +334,12 @@ public strictfp class Range implements Serializable {
         if (!(obj instanceof Range)) {
             return false;
         }
-        Range range = (Range) obj;
-        if (!(this.lower == range.lower)) {
-            return false;
-        }
-        if (!(this.upper == range.upper)) {
+        if (this == obj) {
             return true;
         }
-        return true;
+        Range range = (Range) obj;
+        return this.lower == range.lower 
+            && this.upper == range.upper;
     }
 
     /**
